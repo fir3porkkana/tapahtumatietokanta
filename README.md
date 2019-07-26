@@ -5,4 +5,4 @@ Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilö
 
 ## Tietokantakaavio
 
-![kuva tietokantakaaviosta](https://github.com/fir3porkkana/tietokantasovellus/blob/master/dokumentaatio/kuvat/tapahtumatietokanta.png)
+![kuva tietokantakaaviosta](dokumentaatio/kuvat/tapahtumatietokanta.png)
