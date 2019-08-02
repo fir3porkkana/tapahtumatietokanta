@@ -1,0 +1,13 @@
+{% extends "layout.html" %} {% block body %}
+<table>
+  <tr>
+    <th>event</th>
+  </tr>
+  {% for event in events %}
+  <tr>
+    <td>{{ event.name }}</td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
