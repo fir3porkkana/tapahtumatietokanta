@@ -1,4 +1,4 @@
-[# Tietokantasovellus: tapahtumatietokanta](https://lit-eventdb.herokuapp.com/)
+# [Tietokantasovellus: tapahtumatietokanta](https://lit-eventdb.herokuapp.com/)
 
 Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilöt voivat sitten merkitä osallistuvansa/kiinnostuneisuutta/tms.
 
