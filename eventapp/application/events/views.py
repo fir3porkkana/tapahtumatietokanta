@@ -12,6 +12,15 @@ def events_form():
     return render_template("events/new.html")
 
 
+@app.route("/events/<event_id>/", methods=["POST"])
+def events_set_cancelled(event_id):
+    
+    e = Event.query.get(event_id)
+    e.cancelled = False if e.cancelled else True
+    db.session().commit()
+
+    return redirect(url_for("events_index"))
+
 @app.route("/events/", methods=["POST"])
 def events_create():
     print(request.form.get("name"))

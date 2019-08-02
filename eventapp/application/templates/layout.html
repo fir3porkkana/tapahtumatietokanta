@@ -6,6 +6,11 @@
   </head>
 
   <body>
+      <body>
+          <ul>
+      <li><a href="{{ url_for('events_index') }}">list events</a></li>
+      <li><a href="{{ url_for('events_form') }}">add an event</a></li>
+          </ul>
     {% block body %}
     <p>
       Content.

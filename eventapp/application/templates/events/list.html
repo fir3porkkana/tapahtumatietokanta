@@ -2,10 +2,20 @@
 <table>
   <tr>
     <th>event</th>
+    <th>cancelled</th>
   </tr>
   {% for event in events %}
   <tr>
     <td>{{ event.name }}</td>
+    <td>{{ event.cancelled }}</td>
+    <td>
+      <form
+        method="POST"
+        action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+      >
+        <input type="submit" value="change" />
+      </form>
+    </td>
   </tr>
   {% endfor %}
 </table>
