@@ -2,11 +2,13 @@
 <table>
   <tr>
     <th>event</th>
+    <th>description</th>
     <th>cancelled</th>
   </tr>
   {% for event in events %}
   <tr>
     <td>{{ event.name }}</td>
+    <td>{{ event.description }}</td>
     <td>{{ event.cancelled }}</td>
     <td>
       <form
