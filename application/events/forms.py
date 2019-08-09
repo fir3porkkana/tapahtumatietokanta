@@ -7,3 +7,10 @@ class EventForm(FlaskForm):
 
     class Meta:
         csrf = False
+
+class ModifyForm(FlaskForm):
+    name = StringField("Event name", [validators.Length(min=2)])
+    description = StringField("Event description")
+
+    class Meta:
+        csrf = False

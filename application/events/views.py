@@ -26,7 +26,7 @@ def events_set_cancelled(event_id):
 def event_view_by_id(event_id):
     e = Event.query.get(event_id)
 
-    return render_template("events/one.html", event = e)
+    return render_template("events/one.html", event = e, form = EventForm())
 
 @app.route("/events/", methods=["POST"])
 def events_create():
@@ -44,4 +44,7 @@ def events_create():
 
     return redirect(url_for("events_index"))
 
-
+@app.route("/events/modify/<event_id>", methods=["POST"])
+def events_modify(event_id):
+    
+    return render_template("events/one.html", event = e)

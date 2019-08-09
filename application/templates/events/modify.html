@@ -1,5 +1,5 @@
-{% extends "layout.html" %} {% block body %}
-<form method="POST" action="{{ url_for('events_change') }}">
+{% extends "one.html" %} {% block body %}
+<form method="POST" action="{{ url_for('events_modify') }}">
   <table>
     <tr>
       <td>
@@ -26,7 +26,7 @@
     </tr>
     <tr>
       <td colspan="2">
-        <input type="submit" value="Add a new event" />
+        <input type="submit" value="post changes" />
       </td>
     </tr>
   </table>
