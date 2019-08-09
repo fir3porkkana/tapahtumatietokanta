@@ -23,7 +23,7 @@ def events_set_cancelled(event_id):
     return redirect(url_for("events_index"))
 
 @app.route("/events/<event_id>/", methods=["GET"])
-def event_view_by_id():
+def event_view_by_id(event_id):
     e = Event.query.get(event_id)
 
     return render_template("events/one.html", event = e)
@@ -43,3 +43,5 @@ def events_create():
     db.session().commit()
 
     return redirect(url_for("events_index"))
+
+

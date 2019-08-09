@@ -1,0 +1,27 @@
+{% extends "layout.html" %} {% block body %}
+
+<h1>{{ event.name }}</h1>
+<p>{{ event.description }}</p>
+<p>Cancelled: {{ event.cancelled }}</p>
+<form
+  method="POST"
+  action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+>
+  <input type="text" value="{{ event.name }}" />
+  <input type="submit" value="change" />
+</form>
+<form
+  method="POST"
+  action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+>
+  <input type="text" value="{{ event.description }}" />
+  <input type="submit" value="change" />
+</form>
+<form
+  method="POST"
+  action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+>
+  <input type="submit" value="change wether the event is on or not" />
+</form>
+
+{% endblock %}

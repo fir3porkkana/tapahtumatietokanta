@@ -11,7 +11,7 @@
       Logged in as {{ current_user.name }} <a href="{{ url_for('auth_logout') }}">Log out</a>
     </p>
     {% else %}
-    <a href="{{ url_for('auth_login') }}"> log in</a>
+    <a href="{{ url_for('auth_login') }}"> log in</a>  <a href="{{ url_for('auth_create_new') }}">create an account</a>
     {% endif %}
 
       <body>

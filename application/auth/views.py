@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, url_for
 from flask_login import login_user, logout_user
 
-from application import app
+from application import app, db
 from application.auth.models import User
 from application.auth.forms import LoginForm, AccountForm
 
@@ -39,8 +39,11 @@ def auth_create_new():
     if not form.validate():
         return render_template("/auth/accountform.html", form = form)
 
-    #if request.method == "POST"
+    u = User(request.form.get("name"), request.form.get("username"), request.form.get("password"))
     
-    return redirect(url_for("index"))
+    db.session.add(u)
+    db.session.commit()
+
+    return render_template("auth/loginform.html", form = LoginForm(), error = "now, try logging in")
         
     
