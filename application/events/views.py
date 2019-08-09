@@ -9,13 +9,11 @@ def events_index():
 
 
 @app.route("/events/new/")
-@login_required
 def events_form():
     return render_template("events/new.html", form = EventForm())
 
 
 @app.route("/events/<event_id>/", methods=["POST"])
-@login_required
 def events_set_cancelled(event_id):
     
     e = Event.query.get(event_id)
@@ -31,7 +29,6 @@ def event_view_by_id(event_id):
     return render_template("events/one.html", event = e, form = EventForm())
 
 @app.route("/events/", methods=["POST"])
-@login_required
 def events_create():
     print(request.form.get("name"))
     print(request.form.get("description"))
@@ -48,7 +45,6 @@ def events_create():
     return redirect(url_for("events_index"))
 
 @app.route("/events/modify/<event_id>", methods=["POST"])
-@login_required
 def events_modify(event_id):
     
     return render_template("events/one.html", event = e)
