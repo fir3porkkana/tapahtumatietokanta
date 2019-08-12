@@ -10,15 +10,15 @@
     <td>{{ event.name }}</td>
     <td>{{ event.description }}</td>
     <td>{{ event.cancelled }}</td>
-    <td>
+    <td><a href="/events/{{ event.id }}">view/change</a></td>
+    <!-- <td>
       <form
         method="POST"
-        action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+        action="{{ url_for('events_delete', event_id=event.id)}}"
       >
-        <input type="submit" value="change" />
+        <input type="submit" value="delete" />
       </form>
-    </td>
-    <td><a href="/events/{{ event.id }}">view/change</a></td>
+    </td> -->
   </tr>
   {% endfor %}
 </table>

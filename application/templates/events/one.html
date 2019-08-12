@@ -7,21 +7,24 @@
   method="POST"
   action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
 >
-  <input type="text" value="{{ event.name }}" />
-  <input type="submit" value="change" />
+  {{ form.name(value=event.name) }}
+  <input type="submit" value="set event name" />
 </form>
 <form
   method="POST"
   action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
 >
-  <input type="text" value="{{ event.description }}" />
-  <input type="submit" value="change" />
+  {{ form.description(value=event.description) }}
+  <input type="submit" value="set event description" />
 </form>
 <form
   method="POST"
   action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
 >
   <input type="submit" value="change wether the event is on or not" />
+</form>
+<form method="POST" action="{{ url_for('events_delete', event_id=event.id)}}">
+  <input type="submit" value="delete" />
 </form>
 
 {% endblock %}
