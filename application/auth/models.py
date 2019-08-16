@@ -1,13 +1,11 @@
 from application import db
+from application.models import Base
 
-class User(db.Model):
+from sqlalchemy.sql import text
+
+class User(Base):
 
     __tablename__ = "account"
-
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default = db.func.current_timestamp(),
-    onupdate = db.func.current_timestamp())
 
     name = db.Column(db.String(144), nullable = False)
     username = db.Column(db.String(144), nullable = False)
@@ -29,3 +27,15 @@ class User(db.Model):
 
     def is_authenticated(self):
         return True
+
+    # @staticmethod
+    # def find_events_with_no_users():
+    #     stms = text("SELECT event.name FROM event"
+    #                 " WHERE COUNT(event.accounts) = 0")
+    #     res = db.engine.execute(stms)
+
+    #     response = []
+    #     for row in res:
+    #         response.append({"name":row})
+        
+    #     return response

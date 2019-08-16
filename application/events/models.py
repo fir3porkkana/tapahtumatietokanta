@@ -1,17 +1,20 @@
 from application import db
+from application.models import Base
 
+userEvent = db.Table("userEvent",
+    db.Column("account_id", db.Integer, db.ForeignKey("account.id"), primary_key=True),
+    db.Column("event_id", db.Integer, db.ForeignKey("event.id"), primary_key=True),
+)
 
-class Event(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    date_created = db.Column(db.DateTime, default=db.func.current_timestamp())
-    date_modified = db.Column(db.DateTime, default=db.func.current_timestamp(),
-                              onupdate=db.func.current_timestamp())
-
+class Event(Base):
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(144), nullable=True)
     cancelled = db.Column(db.Boolean, nullable=False)
+
+    accounts = db.relationship("User", secondary=userEvent, lazy="subquery", backref=db.backref("events", lazy=True))
 
     def __init__(self, name, description):
         self.name = name
         self.description = description
         self.cancelled = False
+
