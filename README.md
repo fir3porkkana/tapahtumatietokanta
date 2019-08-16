@@ -6,3 +6,6 @@ Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilö
 ## Tietokantakaavio
 
 ![kuva tietokantakaaviosta](dokumentaatio/kuvat/tapahtumatietokanta.png)
+
+
+## [User storyt](dokumentaatio/userstories.md)
