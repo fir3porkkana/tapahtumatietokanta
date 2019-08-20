@@ -1,14 +1,16 @@
 {% extends "layout.html" %} {% block body %}
 <p>
-  Welcome to the contemporary events app!
+  Welcome to the event application!
 </p>
-<!-- <p>
+<p>
   The following events need participants, check them out:
 </p>
 
 <ul>
-  {% for event in needs_tasks %}
-  <li>{{ user.id }} {{ user.name }}</li>
+  {% for event in needs_participants %}
+  <li>
+    <a href="/events/{{ event.id }}">{{ event.name }}</a>
+  </li>
   {% endfor %}
-</ul>  -->
+</ul>
 {% endblock %}

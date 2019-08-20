@@ -18,7 +18,7 @@ def auth_login():
     user = User.query.filter_by(username = form.username.data, password = form.password.data).first()
     if not user:
         return render_template("auth/loginform.html", form = form,
-        error = "Invalid username or password blyat")
+        error = "Invalid username or password")
 
     print("User "+ user.name + " was recognised")
     login_user(user)
