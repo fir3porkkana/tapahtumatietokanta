@@ -28,18 +28,18 @@ class User(Base):
     def is_authenticated(self):
         return True
 
-    @staticmethod
-    def find_events_with_no_users():
-        stms = text("SELECT event.id, event.name FROM event"
-                    " WHERE event.id NOT IN ("
-                    "       SELECT userEvent.event_id FROM userEvent)"
-                    "GROUP BY event.name")
-        res = db.engine.execute(stms)
+    # @staticmethod
+    # def find_events_with_no_users():
+    #     stms = text("SELECT event.id, event.name FROM event"
+    #                 " WHERE event.id NOT IN ("
+    #                 "       SELECT userEvent.event_id FROM userEvent)"
+    #                 "GROUP BY event.name")
+    #     res = db.engine.execute(stms)
 
-        response = []
-        for row in res:
-            response.append({"id":row[0], "name":row[1]})
+    #     response = []
+    #     for row in res:
+    #         response.append({"id":row[0], "name":row[1]})
         
-        print(response)
+    #     print(response)
         
-        return response
+    #     return response
