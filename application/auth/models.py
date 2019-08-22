@@ -33,7 +33,7 @@ class User(Base):
         stms = text("SELECT event.id, event.name FROM event"
                     " WHERE event.id NOT IN ("
                     "       SELECT userevent.event_id FROM userevent)"
-                    "GROUP BY event.name")
+                    "GROUP BY event.id")
         res = db.engine.execute(stms)
 
         response = []
