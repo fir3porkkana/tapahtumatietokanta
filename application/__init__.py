@@ -23,7 +23,7 @@ from application import views
 
 # Tuodaan models-luokka käyttöön events-kansiosta
 from application.events import models
-from application.events.models import userEvent
+from application.events.models import userevent
 from application.events import views
 
 # tuodaan models luotavaksi käyttäjäkansiosta
