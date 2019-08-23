@@ -3,6 +3,7 @@
 <h1>{{ event.name }}</h1>
 <p>{{ event.description }}</p>
 <p>Cancelled: {{ event.cancelled }}</p>
+{% if current_user.id == event.creator_id %}
 <form
   method="POST"
   action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
@@ -26,5 +27,25 @@
 <form method="POST" action="{{ url_for('events_delete', event_id=event.id)}}">
   <input type="submit" value="delete" />
 </form>
+{% endif %} {% if users_interested %}
+<p>
+  People currently coming
+</p>
+<ul>
+  {% for user in users_interested %}
+  <li>
+    {{ user.name }}
+  </li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No-one has expressed interest in coming, be the first to show up!</p>
+{% endif %} {% if current_user %}
+<form
+  method="POST"
+  action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
+>
+  <input type="submit" value="toggle your interest" />
+</form>
 
-{% endblock %}
+{%endif%} {% endblock %}
