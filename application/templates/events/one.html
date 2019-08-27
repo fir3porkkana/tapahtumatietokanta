@@ -27,7 +27,7 @@
 <form method="POST" action="{{ url_for('events_delete', event_id=event.id)}}">
   <input type="submit" value="delete" />
 </form>
-{% endif %} {% if users_interested %}
+{% endif %}
 <p>
   People currently coming
 </p>
@@ -38,14 +38,12 @@
   </li>
   {% endfor %}
 </ul>
-{% else %}
-<p>No-one has expressed interest in coming, be the first to show up!</p>
-{% endif %} {% if current_user %}
+{% if current_user %}
 <form
   method="POST"
   action="{{ url_for('events_set_cancelled', event_id=event.id)}}"
 >
-  <input type="submit" value="toggle your interest" />
+  <input type="submit" value="toggle interest" />
 </form>
 
 {%endif%} {% endblock %}
