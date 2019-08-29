@@ -3,6 +3,7 @@
 <h1>{{ event.name }}</h1>
 <p>{{ event.description }}</p>
 <p>Cancelled: {{ event.cancelled }}</p>
+<p>Hour of creation: {{ event.date_created }}</p>
 {% if current_user.id == event.creator_id %}
 <form
   method="POST"
