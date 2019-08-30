@@ -34,5 +34,17 @@ class Event(Base):
             response.append({"id":row[0], "name":row[1]})
 
         return response
+    
+    @staticmethod
+    def find_creator_of_event(creator_id):
+        stms = text("SELECT account.name FROM account"
+                    " WHERE account.id = :creator_id").params(creator_id=creator_id)
+        res = db.engine.execute(stms)
+
+        response = []
+        for row in res:
+            response.append({"name":row[0]})
+
+        return response
 
 

@@ -48,13 +48,17 @@ def events_set_cancelled(event_id):
             e.accounts.append(current_user)
             
     db.session.commit()
-    return render_template("events/one.html", event = e, form = ModifyForm(), users_interested = Event.find_users_interested_in_specific_event(e.id))
+    return redirect(url_for("event_view_by_id", event_id = e.id))
 
 @app.route("/events/<event_id>/", methods=["GET"])
 def event_view_by_id(event_id):
     e = Event.query.get(event_id)
+    print("____________________________________________________________")
+    print(Event.find_creator_of_event(e.creator_id))
+    print("____________________________________________________________")
 
-    return render_template("events/one.html", event = e, form = ModifyForm())
+
+    return render_template("events/one.html", event = e, form = ModifyForm(), users_interested = Event.find_users_interested_in_specific_event(e.id), creator = Event.find_creator_of_event(e.creator_id))
 
 @app.route("/events/", methods=["POST"])
 @login_required
