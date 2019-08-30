@@ -34,6 +34,7 @@ Tämän jälkeen sovellus pyörii lokaalisti portissa 5000
     
 3. Sovellukselle on nyt paikka herokussa, ja lokaalisti projektilla on myös tämän paikan osoite tiedossa. Kun olemme siihen valmiita, voimme lähettää sovelluksen Herokuun seuraavanlaisesti:
 
-    ```git add .
+    ```
+    git add .
     git commit -m"first commit"
     git push heroku master```
