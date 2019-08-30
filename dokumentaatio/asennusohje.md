@@ -37,4 +37,4 @@ Tämän jälkeen sovellus pyörii lokaalisti portissa 5000
     ```
     git add .
     git commit -m"first commit"
-    git push heroku master```
+    git push heroku master
