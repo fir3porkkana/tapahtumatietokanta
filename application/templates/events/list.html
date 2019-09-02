@@ -3,13 +3,13 @@
   <tr>
     <th>event</th>
     <th>description</th>
-    <th>cancelled</th>
+    <th>last modified</th>
   </tr>
   {% for event in events %}
   <tr>
     <td>{{ event.name }}</td>
     <td>{{ event.description }}</td>
-    <td>{{ event.cancelled }}</td>
+    <td>{{ event.date_modified }}</td>
     <td><a href="/events/{{ event.id }}">view/change</a></td>
     <!-- <td>
       <form
