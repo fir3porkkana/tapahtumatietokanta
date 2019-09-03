@@ -30,9 +30,7 @@
   <input type="submit" value="delete" />
 </form>
 {% endif %}
-<p>
-  People currently coming
-</p>
+<p>Current amount of participants: {{ amount_of_users }}</p>
 <ul>
   {% for user in users_interested %}
   <li>

@@ -53,12 +53,13 @@ def events_set_cancelled(event_id):
 @app.route("/events/<event_id>/", methods=["GET"])
 def event_view_by_id(event_id):
     e = Event.query.get(event_id)
-    print("____________________________________________________________")
-    print(Event.find_creator_of_event(e.creator_id))
-    print("____________________________________________________________")
+    
+    #annetaan yhden tapahtuman näyttävälle sivulle lista kiinnostuneista käyttäjistä, niiden määrä sekä tapahtuman luonut käyttäjä
+    users_interested = Event.find_users_interested_in_specific_event(e.id)
+    amount_of_users = len(users_interested)
+    creator = Event.find_creator_of_event(e.creator_id)
 
-
-    return render_template("events/one.html", event = e, form = ModifyForm(), users_interested = Event.find_users_interested_in_specific_event(e.id), creator = Event.find_creator_of_event(e.creator_id))
+    return render_template("events/one.html", event = e, form = ModifyForm(), users_interested = users_interested, creator = creator, amount_of_users = amount_of_users)
 
 @app.route("/events/", methods=["POST"])
 @login_required
