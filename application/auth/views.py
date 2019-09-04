@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user
+from flask_login import login_user, logout_user, login_required
 
 from application import app, db
 from application.auth.models import User
@@ -45,5 +45,20 @@ def auth_create_new():
     db.session.commit()
 
     return render_template("auth/loginform.html", form = LoginForm(), error = "now, try logging in")
+
+@app.route("/auth/<account_id>/", methods=["GET"])
+def auth_view_by_id(account_id):
+    account = User.query.get(account_id)
+
+    return render_template("auth/single.html", account = account)
+
+
+@app.route("/auth/delete/<account_id>", methods=["POST"])
+@login_required
+def auth_delete(account_id):
+    account = User.query.get(account_id)
+    db.session.delete(account)
+    db.session.commit()
+    return redirect(url_for("events_index"))
         
     
