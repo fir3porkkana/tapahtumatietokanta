@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 
 from application import app, db
 from application.auth.models import User
@@ -47,11 +47,34 @@ def auth_create_new():
     return render_template("auth/loginform.html", form = LoginForm(), error = "now, try logging in")
 
 @app.route("/auth/<account_id>/", methods=["GET"])
+@login_required
 def auth_view_by_id(account_id):
     account = User.query.get(account_id)
+    # number_of_events = User.find_number_of_events_associated_with_specific_account(account_id)
+    own_events = User.find_events_created_by_account(account_id)
+    events_of_interest = User.find_events_associated_with_specific_account(account_id)
 
-    return render_template("auth/single.html", account = account)
+    return render_template("auth/single.html", account = account, form = AccountForm(), number_of_events = 0, own_events = own_events, events_of_interest = events_of_interest)
 
+@app.route("/accounts/<account_id>/", methods=["POST"])
+@login_required
+def auth_modify(account_id):
+    name = request.form.get("name")
+    username = request.form.get("username")
+    password = request.form.get("password")
+    account = User.query.get(account_id)
+    
+    #katsotaan, mitä osoitteeseen on postattu, ja muutetaan arvoa sen mukaan
+    if account.id == current_user.id:
+        if name:
+            account.name = name
+        elif username:
+            account.username = username
+        elif password:
+            account.password = password
+            
+    db.session.commit()
+    return redirect(url_for("auth_view_by_id", account_id = account.id))
 
 @app.route("/auth/delete/<account_id>", methods=["POST"])
 @login_required

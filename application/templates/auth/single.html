@@ -2,9 +2,40 @@
 
 <h1>{{ account.name }}</h1>
 <p>username: {{ account.username }}</p>
+<!-- <p>NO. events created/signed up for {{ number_of_events }}</p> -->
 
-<form method="POST" action="{{ url_for('auth_delete', account_id=account.id)}}">
-  <input type="submit" value="delete" />
+{% if own_events %}
+<h3>Events you've created</h3>
+<ul>
+  {% for event in own_events %}
+  <li>
+    <a href="/events/{{ event.id }}">{{ event.name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{%endif%} {% if events_of_interest %}
+<h3>Events you've signed up for</h3>
+<ul>
+  {% for event in events_of_interest %}
+  <li>
+    <a href="/events/{{ event.id }}">{{ event.name }}</a>
+  </li>
+  {% endfor %}
+</ul>
+{%endif%} {% if current_user.id == account.id %}
+<form method="POST" action="{{ url_for('auth_modify', account_id=account.id)}}">
+  {{ form.name(value=account.name) }}
+  <input type="submit" value="change your name" />
 </form>
-
-{% endblock %}
+<form method="POST" action="{{ url_for('auth_modify', account_id=account.id)}}">
+  {{ form.username(value=account.username) }}
+  <input type="submit" value="change your account username" />
+</form>
+<form method="POST" action="{{ url_for('auth_modify', account_id=account.id)}}">
+  {{ form.password(value=account.password) }}
+  <input type="submit" value="set your password" />
+</form>
+<form method="POST" action="{{ url_for('auth_delete', account_id=account.id)}}">
+  <input type="submit" value="delete account" />
+</form>
+{%endif%} {% endblock %}

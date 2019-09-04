@@ -43,3 +43,43 @@ class User(Base):
         print(response)
         
         return response
+    
+    @staticmethod
+    def find_events_associated_with_specific_account(account_id):
+        stms = text("SELECT event.id, event.name FROM event"
+                    " JOIN userevent ON userevent.event_id = event.id"
+                    " WHERE userevent.account_id = :account_id").params(account_id=account_id)
+        res = db.engine.execute(stms)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+    
+    @staticmethod
+    def find_number_of_events_associated_with_specific_account(account_id):
+        stms = text("SELECT COUNT(event.id) FROM event"
+                    " JOIN userevent ON userevent.event_id = event.id"
+                    " JOIN userevent ON userevent.account_id = account.id"
+                    " WHERE userevent.account_id = :account_id OR event.creator_id = :account_id").params(account_id=account_id)
+        res = db.engine.execute(stms)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
+    
+    
+    @staticmethod
+    def find_events_created_by_account(account_id):
+        stms = text("SELECT event.id, event.name FROM event"
+                    " WHERE event.creator_id = :account_id").params(account_id=account_id)
+        res = db.engine.execute(stms)
+
+        response = []
+        for row in res:
+            response.append({"id":row[0], "name":row[1]})
+
+        return response
