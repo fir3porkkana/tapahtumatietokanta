@@ -9,7 +9,9 @@
 {%endif%}
 <p>Hour of creation: {{ event.date_created }}</p>
 
-<p>Current amount of participants: {{ amount_of_users }}</p>
+<p>
+  Current amount of participants: {{ amount_of_users }} / {{ event.minimum }}
+</p>
 <ul>
   {% for user in users_interested %}
   <li>

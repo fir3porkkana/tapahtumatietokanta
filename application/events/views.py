@@ -28,6 +28,7 @@ def events_delete(event_id):
 def events_modify(event_id):
     name = request.form.get("name")
     desc = request.form.get("description")
+    minimum = request.form.get("minimum")
     e = Event.query.get(event_id)
     
     #katsotaan, mitä osoitteeseen on postattu, ja muutetaan arvoa sen mukaan
