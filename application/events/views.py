@@ -25,7 +25,7 @@ def events_delete(event_id):
 
 @app.route("/events/<event_id>/", methods=["POST"])
 @login_required
-def events_set_cancelled(event_id):
+def events_modify(event_id):
     name = request.form.get("name")
     desc = request.form.get("description")
     e = Event.query.get(event_id)
@@ -37,8 +37,8 @@ def events_set_cancelled(event_id):
             e.name = name
         elif desc:
             e.description = desc
-        else:
-            e.cancelled = False if e.cancelled else True
+        elif minimum:
+            e.minimum = minimum
     #muussa tapauksessa käyttäjä merkitsee itsensä kiinnostuneeksi tai poistaa merkintänsä tapahtumasta 
     else:
         #jos käyttäjä on jo kiinnostunut, tämä poistetaan
@@ -71,15 +71,9 @@ def events_create():
     if not form.validate():
         return render_template("events/new.html", form = form)
 
-    e = Event(request.form.get("name"), request.form.get("description"), current_user.id)
+    e = Event(request.form.get("name"), request.form.get("description"), request.form.get("minimum"), current_user.id)
 
     db.session().add(e)
     db.session().commit()
 
     return redirect(url_for("events_index"))
-
-@app.route("/events/modify/<event_id>", methods=["POST"])
-@login_required
-def events_modify(event_id):
-    
-    return render_template("events/one.html", event = e)

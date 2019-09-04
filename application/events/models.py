@@ -11,15 +11,15 @@ userevent = db.Table("userevent",
 class Event(Base):
     name = db.Column(db.String(144), nullable=False)
     description = db.Column(db.String(144), nullable=True)
-    cancelled = db.Column(db.Boolean, nullable=False)
+    minimum = db.Column(db.Integer, nullable=False)
     creator_id = db.Column(db.Integer, db.ForeignKey("account.id"), nullable=False)
 
     accounts = db.relationship("User", secondary=userevent, lazy="subquery", backref=db.backref("events", lazy=True))
 
-    def __init__(self, name, description, current_user_id):
+    def __init__(self, name, description, minimum, current_user_id):
         self.name = name
         self.description = description
-        self.cancelled = False
+        self.minimum = minimum
         self.creator_id = current_user_id
 
     @staticmethod
