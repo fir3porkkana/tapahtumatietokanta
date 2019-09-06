@@ -1,6 +1,6 @@
 # [Tietokantasovellus: tapahtumatietokanta](https://lit-eventdb.herokuapp.com/)
 
-Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilöt voivat sitten merkitä osallistuvansa/kiinnostuneisuutta/tms.
+Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilöt voivat sitten merkitä osallistuvansa/kiinnostuneisuutta. Niin käyttäjiä kuin tapahtumia voi muokata ja poistaa, ja tapahtumille on listauksia joilla niitä rajataan mm. suhteen kirjautuneeseen käyttäjään perusteella.
 
 ### [User storyt](dokumentaatio/userstories.md)
 
