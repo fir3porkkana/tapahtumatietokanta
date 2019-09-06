@@ -9,5 +9,3 @@ Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilö
 ## Tietokantakaavio
 
 ![kuva tietokantakaaviosta](dokumentaatio/kuvat/tapahtumatietokanta.png)
-
-Mikäli ehdin, suunnitelmissa on saattaa tietokantakaavio yllä olevaan tilaan ja lisätä käyttäjille muutamia listauksia ja rajausoptioita sitä hyödyntäen.
