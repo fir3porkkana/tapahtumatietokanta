@@ -10,3 +10,14 @@
     ```
     SELECT account.name FROM account
                     WHERE account.id = [tarkasteltavan tapahtuman luojan id - creator_id]
+                    
+* Käyttäjänä tahdon nähdä itse luomani tapahtumat,
+    ```
+    SELECT event.id, event.name FROM event
+                    WHERE event.creator_id = [current user id - account_id]
+  
+* ja tapahtumat, joista olen itse kiinnostunut
+    ```
+    SELECT event.id, event.name FROM event
+                    JOIN userevent ON userevent.event_id = event.id
+                    WHERE userevent.account_id = [current user id - account_id]
