@@ -11,14 +11,6 @@
     <td>{{ event.description }}</td>
     <td>{{ event.date_modified }}</td>
     <td><a href="/events/{{ event.id }}">view/change</a></td>
-    <!-- <td>
-      <form
-        method="POST"
-        action="{{ url_for('events_delete', event_id=event.id)}}"
-      >
-        <input type="submit" value="delete" />
-      </form>
-    </td> -->
   </tr>
   {% endfor %}
 </table>
