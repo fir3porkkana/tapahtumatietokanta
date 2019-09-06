@@ -4,6 +4,8 @@ Tarkoituksena on tehdä sovellus, johon voi lisätä tapahtumia, joihin henkilö
 
 ## [User storyt](dokumentaatio/userstories.md)
 
+## [Puuttuvat toiminnallisuudet](/dokumentaatio/puuttuvat.md)
+
 ## Tietokantakaavio
 
 ![kuva tietokantakaaviosta](dokumentaatio/kuvat/tapahtumatietokanta.png)
